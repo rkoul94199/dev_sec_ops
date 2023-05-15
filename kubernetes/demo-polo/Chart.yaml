@@ -1,0 +1,7 @@
+apiVersion: v2
+name: demo-polo
+description: Deploy java via Helm
+type: application
+version: 0.1.0
+appVersion: "1.16.0"
+

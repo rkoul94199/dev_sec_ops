@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "demo-polo.fullname" . }}
+spec:
+  selector:
+    matchLabels:
+      app: {{- include "demo-polo.selectorLabels" . | nindent 6 }}
+  replicas: {{ .Values.replicaCount }}
+  template:
+    metadata:
+      labels:
+        app: {{- include "demo-polo.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - name: {{ .Chart.Name }}
+        image: "{{ .Values.image.repository }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: 8010
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8010
+          initialDelaySeconds: 30
+          timeoutSeconds: 1
+
