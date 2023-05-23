@@ -1,0 +1,29 @@
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class PomTest {
+
+    @Test
+    public void testGroupId() {
+        String expectedGroupId = "uk.co.danielbryant.djshopping";
+        String actualGroupId = Pom.getGroupId();
+        assertEquals(expectedGroupId, actualGroupId);
+    }
+
+    @Test
+    public void testArtifactId() {
+        String expectedArtifactId = "shopfront";
+        String actualArtifactId = Pom.getArtifactId();
+        assertEquals(expectedArtifactId, actualArtifactId);
+    }
+
+    @Test
+    public void testVersion() {
+        String expectedVersion = "0.0.1-SNAPSHOT";
+        String actualVersion = Pom.getVersion();
+        assertEquals(expectedVersion, actualVersion);
+    }
+
+    // Add more test methods for other elements of the POM if needed
+
+}
